@@ -16,11 +16,12 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
    
     
     var dataObject: AnyObject?
-    var dataDictionary = [String]()
+    var dataDictionary = [AnyObject]()
     
     let grayColor = UIColor(red: 246/255, green: 246/255, blue: 246/255, alpha: 1.0)
     let lightBlueColor = UIColor(red: 102/255, green: 171/255, blue: 1, alpha: 1.0)
-    var aboutMeTitles = ["","Name", "Birthdate", "Born City", "Current City", "Education"]
+    let lightOrangeColor = UIColor(red: 1, green: 171/255, blue: 102/255, alpha: 1.0)
+    let aboutMeTitles = ["","Name", "Birthdate", "Born City", "Current City", "Education"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +29,7 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
         tableView.delegate = self
         tableView.dataSource = self
         
-        pageTitle.text = dataDictionary[0]
+        pageTitle.text = dataDictionary[0] as? String
         print(dataDictionary)
         
         // Do any additional setup after loading the view.
@@ -96,7 +97,7 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
     func customizeCell(indexPath: NSIndexPath) -> UITableViewCell{
         var cell:UITableViewCell!
         
-        if (dataDictionary[0] == "About me"){
+        if (dataDictionary[0] as? String == "About me"){
             self.pageTitle.textColor = self.grayColor
             self.pageHeader.backgroundColor = self.lightBlueColor
             self.tableView.separatorColor = self.lightBlueColor
@@ -108,16 +109,30 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
                 tableCell.cellTitle.text = ""
             }else{
                 tableCell.cellTitle.text = aboutMeTitles[indexPath.row]
-                tableCell.info.text = dataDictionary[indexPath.row + 1] as String!
+                tableCell.info.text = dataDictionary[indexPath.row + 1] as? String
             }
             
             cell = tableCell
             
             
-        }else if (dataDictionary[0] == "Schoolarship"){
-            let tableCell = tableView.dequeueReusableCellWithIdentifier("schoolarshipCell") as! RVSchoolarshipTableViewCell
+        }else if (dataDictionary[0] as? String == "Experiences"){
+            
+            
+            self.pageTitle.textColor = self.grayColor
+            self.pageHeader.backgroundColor = self.lightOrangeColor
+            self.tableView.separatorColor = self.lightOrangeColor
+
+            let tableCell = tableView.dequeueReusableCellWithIdentifier("experiencesCell") as! RVExperiencesTableViewCell
+            
+            tableCell.experienceTitle.text = dataDictionary[indexPath.row + 1][0] as? String
+            tableCell.experiencePeriod.text = dataDictionary[indexPath.row + 1][1] as? String
+            tableCell.experienceDescription.text = dataDictionary[indexPath.row + 1][2] as? String
             
             cell = tableCell
+         
+            
+            
+            
             
         }else{
             cell = tableView.dequeueReusableCellWithIdentifier("aboutMeCell") as! RVAboutMeTableViewCell
@@ -128,7 +143,7 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
     
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if (dataDictionary[0] == "About me"){
+        if (dataDictionary[0] as? String == "About me"){
             if (indexPath.row == 0){
                 return 250
             }else if (indexPath.row == 5){

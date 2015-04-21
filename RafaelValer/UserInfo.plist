@@ -2,12 +2,35 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Schoolarship</key>
+	<key>Skills</key>
 	<array>
-		<string>Schoolarship</string>
-		<string>Universidade Federal do Rio Grande do Sul (UFRGS)</string>
+		<string>skills</string>
 	</array>
-	<key>PersonalInformation</key>
+	<key>Experiences</key>
+	<array>
+		<string>Experiences</string>
+		<array>
+			<string>IOs Developer Student - BEPiD</string>
+			<string>February 2015 - present</string>
+			<string>Student at BEPiD (Brazilian Educational Program of iOS Developers), an innovative program do qualify graduationi students to develop for iOS.</string>
+		</array>
+		<array>
+			<string>Web Developer - MConf</string>
+			<string>September 2014 - January 2015</string>
+			<string>Worked as web developer in a open source project whose goal is the creation of a Web Conference System.</string>
+		</array>
+		<array>
+			<string>Scientific Initiation Schoolarship - PRAV</string>
+			<string>January - September 2014</string>
+			<string>Member of the Mobilicare Project, a management system health to pacients with chronic diseases.</string>
+		</array>
+		<array>
+			<string>Scientific Initiation Schoolarship - UFRGS</string>
+			<string>February - July 2013</string>
+			<string>Development of an urban network that simulated the city traffic problems and created solutions for them.</string>
+		</array>
+	</array>
+	<key>About me</key>
 	<array>
 		<string>About me</string>
 		<string></string>

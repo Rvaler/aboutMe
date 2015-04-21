@@ -54,8 +54,10 @@ class RVPageViewController: UIViewController, UIPageViewControllerDataSource, UI
         
         var pageStrings = [String]()
         
-        pageStrings.append("PersonalInformation")
-        pageStrings.append("Schoolarship")
+        pageStrings.append("About me")
+        pageStrings.append("Experiences")
+        pageStrings.append("Skills")
+        //pageStrings.append("Skills")
         /*
         for i in 1...4
         {
@@ -80,7 +82,7 @@ class RVPageViewController: UIViewController, UIPageViewControllerDataSource, UI
         
         dataViewController.dataObject = pageContent[index]
         //dataViewController.dataDictionary = userInfo?.objectForKey(pageContent[index] as! String)
-        dataViewController.dataDictionary = userInfo?.objectForKey(pageContent[index]) as! [(String)]
+        dataViewController.dataDictionary = userInfo?.objectForKey(pageContent[index]) as! [(AnyObject)]
         return dataViewController
     }
     

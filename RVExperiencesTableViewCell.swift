@@ -1,5 +1,5 @@
 //
-//  RVSchoolarshipTableViewCell.swift
+//  RVExperiencesTableViewCell.swift
 //  RafaelValer
 //
 //  Created by Rafael Valer on 4/21/15.
@@ -8,8 +8,11 @@
 
 import UIKit
 
-class RVSchoolarshipTableViewCell: UITableViewCell {
+class RVExperiencesTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var experienceTitle: UILabel!
+    @IBOutlet weak var experiencePeriod: UILabel!
+    @IBOutlet weak var experienceDescription: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
