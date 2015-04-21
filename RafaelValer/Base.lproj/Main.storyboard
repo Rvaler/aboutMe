@@ -56,6 +56,7 @@
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="122" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Z5C-ef-1Ru">
                                 <rect key="frame" x="0.0" y="101" width="600" height="499"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="aboutMeCell" rowHeight="122" id="Wft-Ad-EEt" customClass="RVAboutMeTableViewCell" customModule="RafaelValer" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -63,7 +64,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Wft-Ad-EEt" id="K0M-sZ-gFI">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-perfil" translatesAutoresizingMaskIntoConstraints="NO" id="lpV-9F-M2C">
+                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="perfil" translatesAutoresizingMaskIntoConstraints="NO" id="lpV-9F-M2C">
                                                     <rect key="frame" x="200" y="11" width="200" height="200"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="200" id="0Ti-Sh-Gw5"/>
@@ -180,6 +181,29 @@
                                             <outlet property="technicalSkillsDescription" destination="JYf-Nq-CDY" id="Yrh-ct-jcY"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="contactsCell" id="IR5-Wd-eyQ" customClass="RVContactsTableViewCell" customModule="RafaelValer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IR5-Wd-eyQ" id="JSl-LI-s1L">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DPz-Si-pcC">
+                                                    <rect key="frame" x="8" y="50" width="584" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="DPz-Si-pcC" firstAttribute="leading" secondItem="JSl-LI-s1L" secondAttribute="leading" constant="8" id="Jq9-hc-ako"/>
+                                                <constraint firstAttribute="trailing" secondItem="DPz-Si-pcC" secondAttribute="trailing" constant="8" id="qJh-N0-kcv"/>
+                                                <constraint firstAttribute="centerY" secondItem="DPz-Si-pcC" secondAttribute="centerY" id="y7N-cU-ucm"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="contactInfo" destination="DPz-Si-pcC" id="7go-As-qv3"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
@@ -194,6 +218,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backgroundView" destination="GCs-69-BCE" id="CCb-9N-6BD"/>
                         <outlet property="pageHeader" destination="ohs-N3-aes" id="OTb-fo-9Id"/>
                         <outlet property="pageTitle" destination="Cxm-6e-p7a" id="sMj-Yu-uOa"/>
                         <outlet property="tableView" destination="Z5C-ef-1Ru" id="LI6-nJ-xfg"/>
@@ -205,6 +230,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon-perfil" width="57" height="54"/>
+        <image name="perfil" width="478" height="478"/>
     </resources>
 </document>

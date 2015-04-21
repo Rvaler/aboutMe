@@ -10,6 +10,7 @@ import UIKit
 
 class RVContentViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    @IBOutlet var backgroundView: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var pageHeader: UIView!
     @IBOutlet weak var pageTitle: UILabel!
@@ -22,7 +23,8 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
     let lightBlueColor = UIColor(red: 102/255, green: 171/255, blue: 1, alpha: 1.0)
     let lightOrangeColor = UIColor(red: 1, green: 171/255, blue: 102/255, alpha: 1.0)
     let lightGreenColor = UIColor(red: 113/255, green: 187/255, blue: 64/255, alpha: 1.0)
-    let aboutMeTitles = ["","Name", "Birthdate", "Born City", "Current City", "Education"]
+    let lightPurpleColor = UIColor(red: 210/255, green: 72/255, blue: 122/255, alpha: 1.0)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,55 +62,36 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        //var cell:UITableViewCell!
-        
-        
-        //configure image cell of about me
-//        if (dataDictionary[0] == "About me"){
-//            self.pageTitle.textColor = self.grayColor
-//            self.pageHeader.backgroundColor = self.lightBlueColor
-//            self.tableView.separatorColor = self.lightBlueColor
-//            
-//            let tableCell = tableView.dequeueReusableCellWithIdentifier("aboutMeCell") as! RVAboutMeTableViewCell
-//            
-//            if (indexPath.row == 0){
-//                tableCell.profileImage.hidden = false
-//                tableCell.cellTitle.text = ""
-//            }else{
-//                tableCell.cellTitle.text = aboutMeTitles[indexPath.row]
-//                tableCell.info.text = dataDictionary[indexPath.row + 1] as String!
-//            }
-//            
-//            cell = tableCell
-//            
-//            
-//        }else if (dataDictionary[0] == "Schoolarship"){
-//            let tableCell = tableView.dequeueReusableCellWithIdentifier("schoolarshipCell") as! RVSchoolarshipTableViewCell
-//            
-//            cell = tableCell
-//            
-//        }else{
-//            cell = tableView.dequeueReusableCellWithIdentifier("aboutMeCell") as! RVAboutMeTableViewCell
-//        }
         let cell:UITableViewCell = customizeCell(indexPath)
         
+        var myInt = indexPath.row
+        var doubleR = 1.4/Float(myInt)
+
         return cell
     }
+    
     
     func customizeCell(indexPath: NSIndexPath) -> UITableViewCell{
         var cell:UITableViewCell!
         
         if (dataDictionary[0] as? String == "About me"){
+            
             self.pageTitle.textColor = self.grayColor
             self.pageHeader.backgroundColor = self.lightBlueColor
             self.tableView.separatorColor = self.lightBlueColor
             
             let tableCell = tableView.dequeueReusableCellWithIdentifier("aboutMeCell") as! RVAboutMeTableViewCell
             
+            self.backgroundView.backgroundColor = UIColor(red: 102/255, green: 171/255, blue: 1, alpha: 0.05)
+            tableCell.backgroundColor = UIColor.clearColor()
+            
             if (indexPath.row == 0){
                 tableCell.profileImage.hidden = false
+                tableCell.profileImage.layer.cornerRadius = tableCell.profileImage.frame.size.width / 2
+                tableCell.profileImage.clipsToBounds = true
                 tableCell.cellTitle.text = ""
             }else{
+                let aboutMeTitles = ["","Name", "Birthdate", "Born City", "Current City", "Education"]
                 tableCell.cellTitle.text = aboutMeTitles[indexPath.row]
                 tableCell.info.text = dataDictionary[indexPath.row + 1] as? String
             }
@@ -124,6 +107,9 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
             self.tableView.separatorColor = self.lightGreenColor
 
             let tableCell = tableView.dequeueReusableCellWithIdentifier("experiencesCell") as! RVExperiencesTableViewCell
+           
+            self.backgroundView.backgroundColor = UIColor(red: 113/255, green: 187/255, blue: 64/255, alpha: 0.05)
+            tableCell.backgroundColor = UIColor.clearColor()
             
             tableCell.experienceTitle.text = dataDictionary[indexPath.row + 1][0] as? String
             tableCell.experiencePeriod.text = dataDictionary[indexPath.row + 1][1] as? String
@@ -138,9 +124,27 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
         
             let tableCell = tableView.dequeueReusableCellWithIdentifier("technicalSkillsCell") as! RVTechnicalSkillsTableViewCell
             
+            self.backgroundView.backgroundColor = UIColor(red: 1, green: 171/255, blue: 102/255, alpha: 0.05)
+            tableCell.backgroundColor = UIColor.clearColor()
+            
             tableCell.technicalSkillsDescription.text = dataDictionary[indexPath.row + 1] as? String
             cell = tableCell
             
+        }else if(dataDictionary[0] as? String == "Contact me"){
+            
+            self.pageTitle.textColor = self.grayColor
+            self.pageHeader.backgroundColor = self.lightPurpleColor
+            self.tableView.separatorColor = self.lightPurpleColor
+            
+            let tableCell = tableView.dequeueReusableCellWithIdentifier("contactsCell") as! RVContactsTableViewCell
+            self.backgroundView.backgroundColor = UIColor(red: 210/255, green: 72/255, blue: 122/255, alpha: 0.05)
+            tableCell.backgroundColor = UIColor.clearColor()
+            
+           
+
+            tableCell.contactInfo.text = dataDictionary[indexPath.row + 1] as? String
+            cell = tableCell
+        
         }else{
             cell = tableView.dequeueReusableCellWithIdentifier("aboutMeCell") as! RVAboutMeTableViewCell
         }
@@ -152,7 +156,7 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if (dataDictionary[0] as? String == "About me"){
             if (indexPath.row == 0){
-                return 250
+                return 225
             }else if (indexPath.row == 5){
                 return 280
             }
@@ -161,6 +165,8 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
             return 200
         }else if(dataDictionary[0] as? String == "Technical Skills"){
             return 130
+        }else if(dataDictionary[0] as? String == "Contact me"){
+            return 100
         }
         
         return 200

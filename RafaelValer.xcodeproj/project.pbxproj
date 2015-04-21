@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		545D0BCF1AE68BE9002D972C /* RVExperiencesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545D0BCE1AE68BE9002D972C /* RVExperiencesTableViewCell.swift */; };
 		545D0BD11AE6B9D4002D972C /* RVTechnicalSkillsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545D0BD01AE6B9D4002D972C /* RVTechnicalSkillsTableViewCell.swift */; };
+		545D0BD31AE6C409002D972C /* RVContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545D0BD21AE6C409002D972C /* RVContactsTableViewCell.swift */; };
 		54D7BB0E1AE5C0F4004C9B51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D7BB0D1AE5C0F4004C9B51 /* AppDelegate.swift */; };
 		54D7BB131AE5C0F4004C9B51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54D7BB111AE5C0F4004C9B51 /* Main.storyboard */; };
 		54D7BB151AE5C0F4004C9B51 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54D7BB141AE5C0F4004C9B51 /* Images.xcassets */; };
@@ -34,6 +35,7 @@
 /* Begin PBXFileReference section */
 		545D0BCE1AE68BE9002D972C /* RVExperiencesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RVExperiencesTableViewCell.swift; path = ../RVExperiencesTableViewCell.swift; sourceTree = "<group>"; };
 		545D0BD01AE6B9D4002D972C /* RVTechnicalSkillsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RVTechnicalSkillsTableViewCell.swift; sourceTree = "<group>"; };
+		545D0BD21AE6C409002D972C /* RVContactsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RVContactsTableViewCell.swift; sourceTree = "<group>"; };
 		54D7BB081AE5C0F4004C9B51 /* RafaelValer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RafaelValer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54D7BB0C1AE5C0F4004C9B51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		54D7BB0D1AE5C0F4004C9B51 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				54D7BB311AE5D2C9004C9B51 /* RVUserInfo.swift */,
 				54D7BB331AE5D2F8004C9B51 /* UserInfo.plist */,
 				54D7BB111AE5C0F4004C9B51 /* Main.storyboard */,
+				545D0BD21AE6C409002D972C /* RVContactsTableViewCell.swift */,
 				545D0BD01AE6B9D4002D972C /* RVTechnicalSkillsTableViewCell.swift */,
 				54D7BB391AE5E791004C9B51 /* RVAboutMeTableViewCell.swift */,
 				54D7BB141AE5C0F4004C9B51 /* Images.xcassets */,
@@ -233,6 +236,7 @@
 			files = (
 				545D0BCF1AE68BE9002D972C /* RVExperiencesTableViewCell.swift in Sources */,
 				545D0BD11AE6B9D4002D972C /* RVTechnicalSkillsTableViewCell.swift in Sources */,
+				545D0BD31AE6C409002D972C /* RVContactsTableViewCell.swift in Sources */,
 				54D7BB301AE5C3AC004C9B51 /* RVPageViewController.swift in Sources */,
 				54D7BB381AE5DCD2004C9B51 /* RVContentViewController.swift in Sources */,
 				54D7BB321AE5D2C9004C9B51 /* RVUserInfo.swift in Sources */,

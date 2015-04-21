@@ -57,6 +57,7 @@ class RVPageViewController: UIViewController, UIPageViewControllerDataSource, UI
         pageStrings.append("About me")
         pageStrings.append("Experiences")
         pageStrings.append("Skills")
+        pageStrings.append("Contacts")
         //pageStrings.append("Skills")
         /*
         for i in 1...4
