@@ -54,8 +54,22 @@
                                     <constraint firstAttribute="bottom" secondItem="Cxm-6e-p7a" secondAttribute="bottom" constant="20" id="rXI-IZ-Lt8"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pc1-kh-YtE" userLabel="pagesControllerView">
+                                <rect key="frame" x="0.0" y="101" width="600" height="24"/>
+                                <subviews>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="c1X-sZ-dzN">
+                                        <rect key="frame" x="273" y="-7" width="55" height="37"/>
+                                    </pageControl>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerY" secondItem="c1X-sZ-dzN" secondAttribute="centerY" id="CwZ-Iq-TEj"/>
+                                    <constraint firstAttribute="height" constant="24" id="RqB-Iv-EOd"/>
+                                    <constraint firstAttribute="centerX" secondItem="c1X-sZ-dzN" secondAttribute="centerX" id="eOn-BK-Hco"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="122" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Z5C-ef-1Ru">
-                                <rect key="frame" x="0.0" y="101" width="600" height="499"/>
+                                <rect key="frame" x="0.0" y="125" width="600" height="453"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="aboutMeCell" rowHeight="122" id="Wft-Ad-EEt" customClass="RVAboutMeTableViewCell" customModule="RafaelValer" customModuleProvider="target">
@@ -209,16 +223,26 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="ohs-N3-aes" firstAttribute="top" secondItem="GCs-69-BCE" secondAttribute="top" id="5Xq-IJ-Tiw"/>
-                            <constraint firstAttribute="bottom" secondItem="Z5C-ef-1Ru" secondAttribute="bottom" id="Ecm-nV-gvN"/>
+                            <constraint firstAttribute="trailing" secondItem="pc1-kh-YtE" secondAttribute="trailing" id="7g7-To-0Bz"/>
+                            <constraint firstAttribute="bottom" secondItem="Z5C-ef-1Ru" secondAttribute="bottom" constant="22" id="Ecm-nV-gvN"/>
+                            <constraint firstItem="Z5C-ef-1Ru" firstAttribute="top" secondItem="pc1-kh-YtE" secondAttribute="bottom" id="Gml-L7-s65"/>
+                            <constraint firstItem="pc1-kh-YtE" firstAttribute="top" secondItem="ohs-N3-aes" secondAttribute="bottom" id="Jrg-ZP-oes"/>
                             <constraint firstAttribute="trailing" secondItem="ohs-N3-aes" secondAttribute="trailing" id="Rby-8e-yY9"/>
+                            <constraint firstItem="pc1-kh-YtE" firstAttribute="leading" secondItem="GCs-69-BCE" secondAttribute="leading" id="ZE5-NE-dDx"/>
                             <constraint firstItem="Z5C-ef-1Ru" firstAttribute="leading" secondItem="GCs-69-BCE" secondAttribute="leading" id="Zhp-kR-n94"/>
                             <constraint firstItem="ohs-N3-aes" firstAttribute="leading" secondItem="GCs-69-BCE" secondAttribute="leading" id="g7c-5y-9nF"/>
                             <constraint firstAttribute="trailing" secondItem="Z5C-ef-1Ru" secondAttribute="trailing" id="guM-10-lmW"/>
                             <constraint firstItem="Z5C-ef-1Ru" firstAttribute="top" secondItem="ohs-N3-aes" secondAttribute="bottom" id="yUR-S2-hCN"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="yUR-S2-hCN"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="backgroundView" destination="GCs-69-BCE" id="CCb-9N-6BD"/>
+                        <outlet property="pageControl" destination="c1X-sZ-dzN" id="MMQ-OT-39L"/>
                         <outlet property="pageHeader" destination="ohs-N3-aes" id="OTb-fo-9Id"/>
                         <outlet property="pageTitle" destination="Cxm-6e-p7a" id="sMj-Yu-uOa"/>
                         <outlet property="tableView" destination="Z5C-ef-1Ru" id="LI6-nJ-xfg"/>

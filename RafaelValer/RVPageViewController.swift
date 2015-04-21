@@ -32,6 +32,7 @@ class RVPageViewController: UIViewController, UIPageViewControllerDataSource, UI
         self.addChildViewController(pageController!)
         self.view.addSubview(self.pageController!.view)
         
+        
         var pageViewRect = self.view.bounds
         pageController!.view.frame = pageViewRect
         pageController!.didMoveToParentViewController(self)
@@ -47,8 +48,6 @@ class RVPageViewController: UIViewController, UIPageViewControllerDataSource, UI
     
     func createContentPages(){
         
-
-        
         let dic = RVUserInfo.init()
         userInfo = dic.info
         
@@ -56,16 +55,9 @@ class RVPageViewController: UIViewController, UIPageViewControllerDataSource, UI
         
         pageStrings.append("About me")
         pageStrings.append("Experiences")
-        pageStrings.append("Skills")
-        pageStrings.append("Contacts")
-        //pageStrings.append("Skills")
-        /*
-        for i in 1...4
-        {
-            let contentString = "lala \(i)"
-            pageStrings.append(contentString)
-        }
-*/
+        pageStrings.append("Technical Skills")
+        pageStrings.append("Contact me")
+        
         pageContent = pageStrings
     }
     
@@ -83,6 +75,9 @@ class RVPageViewController: UIViewController, UIPageViewControllerDataSource, UI
         
         dataViewController.dataObject = pageContent[index]
         //dataViewController.dataDictionary = userInfo?.objectForKey(pageContent[index] as! String)
+        //dataViewController.pageControl.currentPage = index
+        //print("valor \(index)")
+        dataViewController.pageTitles = pageContent as! [(String)]
         dataViewController.dataDictionary = userInfo?.objectForKey(pageContent[index]) as! [(AnyObject)]
         return dataViewController
     }

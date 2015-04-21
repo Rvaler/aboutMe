@@ -10,6 +10,7 @@ import UIKit
 
 class RVContentViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet var backgroundView: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var pageHeader: UIView!
@@ -18,6 +19,9 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
     
     var dataObject: AnyObject?
     var dataDictionary = [AnyObject]()
+    
+    
+    var pageTitles = [String]()
     
     let grayColor = UIColor(red: 246/255, green: 246/255, blue: 246/255, alpha: 1.0)
     let lightBlueColor = UIColor(red: 102/255, green: 171/255, blue: 1, alpha: 1.0)
@@ -28,12 +32,12 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setPageController()
+
         tableView.delegate = self
         tableView.dataSource = self
         
         pageTitle.text = dataDictionary[0] as? String
-        print(dataDictionary)
         
         // Do any additional setup after loading the view.
     }
@@ -44,12 +48,7 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     // MARK: - Table view data source
-    /*
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
-        return 1
-    }*/
+    
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
@@ -63,11 +62,21 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell:UITableViewCell = customizeCell(indexPath)
-        
-        var myInt = indexPath.row
-        var doubleR = 1.4/Float(myInt)
 
         return cell
+    }
+    
+    func setPageController() {
+        let thisPage = dataDictionary[0] as? String
+        if(thisPage == pageTitles[0]){
+            self.pageControl.currentPage = 0
+        }else if(thisPage == pageTitles[1]){
+            self.pageControl.currentPage = 1
+        }else if(thisPage == pageTitles[2]){
+            self.pageControl.currentPage = 2
+        }else{
+            self.pageControl.currentPage = 3
+        }
     }
     
     

@@ -2,7 +2,7 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Contacts</key>
+	<key>Contact me</key>
 	<array>
 		<string>Contact me</string>
 		<string>rvaler93@gmail.com</string>
@@ -10,7 +10,7 @@
 		<string>https://br.linkedin.com/pub/rafael-valer/b7/429/237</string>
 		<string>https://www.facebook.com/rafael.valer.1</string>
 	</array>
-	<key>Skills</key>
+	<key>Technical Skills</key>
 	<array>
 		<string>Technical Skills</string>
 		<string>Working knowledge in programming languages such as C/C++, Objective C, Swift and Ruby.</string>
