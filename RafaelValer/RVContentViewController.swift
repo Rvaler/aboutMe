@@ -21,6 +21,7 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
     let grayColor = UIColor(red: 246/255, green: 246/255, blue: 246/255, alpha: 1.0)
     let lightBlueColor = UIColor(red: 102/255, green: 171/255, blue: 1, alpha: 1.0)
     let lightOrangeColor = UIColor(red: 1, green: 171/255, blue: 102/255, alpha: 1.0)
+    let lightGreenColor = UIColor(red: 113/255, green: 187/255, blue: 64/255, alpha: 1.0)
     let aboutMeTitles = ["","Name", "Birthdate", "Born City", "Current City", "Education"]
     
     override func viewDidLoad() {
@@ -119,8 +120,8 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
             
             
             self.pageTitle.textColor = self.grayColor
-            self.pageHeader.backgroundColor = self.lightOrangeColor
-            self.tableView.separatorColor = self.lightOrangeColor
+            self.pageHeader.backgroundColor = self.lightGreenColor
+            self.tableView.separatorColor = self.lightGreenColor
 
             let tableCell = tableView.dequeueReusableCellWithIdentifier("experiencesCell") as! RVExperiencesTableViewCell
             
@@ -129,10 +130,16 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
             tableCell.experienceDescription.text = dataDictionary[indexPath.row + 1][2] as? String
             
             cell = tableCell
-         
+        }else if(dataDictionary[0] as? String == "Technical Skills"){
             
+            self.pageTitle.textColor = self.grayColor
+            self.pageHeader.backgroundColor = self.lightOrangeColor
+            self.tableView.separatorColor = self.lightOrangeColor
+        
+            let tableCell = tableView.dequeueReusableCellWithIdentifier("technicalSkillsCell") as! RVTechnicalSkillsTableViewCell
             
-            
+            tableCell.technicalSkillsDescription.text = dataDictionary[indexPath.row + 1] as? String
+            cell = tableCell
             
         }else{
             cell = tableView.dequeueReusableCellWithIdentifier("aboutMeCell") as! RVAboutMeTableViewCell
@@ -150,6 +157,10 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
                 return 280
             }
             return 100
+        }else if(dataDictionary[0] as? String == "Experiences"){
+            return 200
+        }else if(dataDictionary[0] as? String == "Technical Skills"){
+            return 130
         }
         
         return 200

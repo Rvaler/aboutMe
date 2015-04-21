@@ -4,7 +4,11 @@
 <dict>
 	<key>Skills</key>
 	<array>
-		<string>skills</string>
+		<string>Technical Skills</string>
+		<string>Working knowledge in programming languages such as C/C++, Objective C, Swift and Ruby.</string>
+		<string>Basic knowledge in programming languages such as R, Python and Java.</string>
+		<string>Experience in Agile Software Development methodologies such as Scrum and XP.</string>
+		<string>Basic knowledge in using big data and machine learning analytics on applications.</string>
 	</array>
 	<key>Experiences</key>
 	<array>

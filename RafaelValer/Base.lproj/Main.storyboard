@@ -157,6 +157,29 @@
                                             <outlet property="experienceTitle" destination="9HZ-oT-AI7" id="j7M-8Z-ZJk"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="technicalSkillsCell" rowHeight="91" id="gxX-VW-qLW" customClass="RVTechnicalSkillsTableViewCell" customModule="RafaelValer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gxX-VW-qLW" id="bT0-F9-4Rb">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JYf-Nq-CDY">
+                                                    <rect key="frame" x="14" y="35" width="572" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="JYf-Nq-CDY" firstAttribute="leading" secondItem="bT0-F9-4Rb" secondAttribute="leading" constant="14" id="mX8-MN-I4g"/>
+                                                <constraint firstAttribute="trailing" secondItem="JYf-Nq-CDY" secondAttribute="trailing" constant="14" id="sy7-vh-yUy"/>
+                                                <constraint firstAttribute="centerY" secondItem="JYf-Nq-CDY" secondAttribute="centerY" id="xHu-9S-dja"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="technicalSkillsDescription" destination="JYf-Nq-CDY" id="Yrh-ct-jcY"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
