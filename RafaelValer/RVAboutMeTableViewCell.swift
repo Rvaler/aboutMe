@@ -10,6 +10,7 @@ import UIKit
 
 class RVAboutMeTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var cellTitle: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var info: UILabel!
     override func awakeFromNib() {

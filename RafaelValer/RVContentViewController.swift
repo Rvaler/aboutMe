@@ -13,12 +13,12 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var pageHeader: UIView!
     @IBOutlet weak var pageTitle: UILabel!
-    @IBOutlet weak var profileImage: UIImageView!
+   
     
     var dataObject: AnyObject?
     var dataDictionary = [String]()
     
-    
+    var aboutMeTitles = ["","Name", "Birthdate", "Born City", "Current City"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,6 +65,7 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
             if (indexPath.row == 0){
                 tableCell.profileImage.hidden = false
             }
+            tableCell.cellTitle.text = aboutMeTitles[indexPath.row]
             tableCell.info.text = dataDictionary[indexPath.row + 1] as String!
             cell = tableCell
         }else{
@@ -74,7 +75,18 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
         return cell
     }
     
-
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if (dataDictionary[0] == "About me"){
+            if (indexPath.row == 0){
+                return 250
+            }
+            return 100
+        }
+        
+        return 200
+    }
+    
     /*
     // MARK: - Navigation
 
