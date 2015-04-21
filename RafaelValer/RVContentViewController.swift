@@ -18,7 +18,9 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
     var dataObject: AnyObject?
     var dataDictionary = [String]()
     
-    var aboutMeTitles = ["","Name", "Birthdate", "Born City", "Current City"]
+    let grayColor = UIColor(red: 246/255, green: 246/255, blue: 246/255, alpha: 1.0)
+    let lightBlueColor = UIColor(red: 102/255, green: 171/255, blue: 1, alpha: 1.0)
+    var aboutMeTitles = ["","Name", "Birthdate", "Born City", "Current City", "Education"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,19 +57,68 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        //let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as! UITableViewCell
-        var cell:UITableViewCell
-        // Configure the cell...
+        
+        //var cell:UITableViewCell!
+        
         
         //configure image cell of about me
+//        if (dataDictionary[0] == "About me"){
+//            self.pageTitle.textColor = self.grayColor
+//            self.pageHeader.backgroundColor = self.lightBlueColor
+//            self.tableView.separatorColor = self.lightBlueColor
+//            
+//            let tableCell = tableView.dequeueReusableCellWithIdentifier("aboutMeCell") as! RVAboutMeTableViewCell
+//            
+//            if (indexPath.row == 0){
+//                tableCell.profileImage.hidden = false
+//                tableCell.cellTitle.text = ""
+//            }else{
+//                tableCell.cellTitle.text = aboutMeTitles[indexPath.row]
+//                tableCell.info.text = dataDictionary[indexPath.row + 1] as String!
+//            }
+//            
+//            cell = tableCell
+//            
+//            
+//        }else if (dataDictionary[0] == "Schoolarship"){
+//            let tableCell = tableView.dequeueReusableCellWithIdentifier("schoolarshipCell") as! RVSchoolarshipTableViewCell
+//            
+//            cell = tableCell
+//            
+//        }else{
+//            cell = tableView.dequeueReusableCellWithIdentifier("aboutMeCell") as! RVAboutMeTableViewCell
+//        }
+        let cell:UITableViewCell = customizeCell(indexPath)
+        
+        return cell
+    }
+    
+    func customizeCell(indexPath: NSIndexPath) -> UITableViewCell{
+        var cell:UITableViewCell!
+        
         if (dataDictionary[0] == "About me"){
+            self.pageTitle.textColor = self.grayColor
+            self.pageHeader.backgroundColor = self.lightBlueColor
+            self.tableView.separatorColor = self.lightBlueColor
+            
             let tableCell = tableView.dequeueReusableCellWithIdentifier("aboutMeCell") as! RVAboutMeTableViewCell
+            
             if (indexPath.row == 0){
                 tableCell.profileImage.hidden = false
+                tableCell.cellTitle.text = ""
+            }else{
+                tableCell.cellTitle.text = aboutMeTitles[indexPath.row]
+                tableCell.info.text = dataDictionary[indexPath.row + 1] as String!
             }
-            tableCell.cellTitle.text = aboutMeTitles[indexPath.row]
-            tableCell.info.text = dataDictionary[indexPath.row + 1] as String!
+            
             cell = tableCell
+            
+            
+        }else if (dataDictionary[0] == "Schoolarship"){
+            let tableCell = tableView.dequeueReusableCellWithIdentifier("schoolarshipCell") as! RVSchoolarshipTableViewCell
+            
+            cell = tableCell
+            
         }else{
             cell = tableView.dequeueReusableCellWithIdentifier("aboutMeCell") as! RVAboutMeTableViewCell
         }
@@ -80,6 +131,8 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
         if (dataDictionary[0] == "About me"){
             if (indexPath.row == 0){
                 return 250
+            }else if (indexPath.row == 5){
+                return 280
             }
             return 100
         }
