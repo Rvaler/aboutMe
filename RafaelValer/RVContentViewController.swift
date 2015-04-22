@@ -35,11 +35,8 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
         super.viewDidLoad()
         //pageController = RVPageViewController()
         
-        //setPageController()
-        
         tableView.delegate = self
         tableView.dataSource = self
-        
         pageTitle.text = dataDictionary[0] as? String
         
         // Do any additional setup after loading the view.
@@ -61,15 +58,13 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        
         //plist has one attribute to set the title of view
         return dataDictionary.count - 1
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
-       // println("% = \(scrollView.contentOffset.x / self.view.frame.size.width)")
+        println("% = \(scrollView.contentOffset.x / self.view.frame.size.width)")
     }
-    
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
@@ -96,20 +91,25 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
+    func cellColors(pageTitleColor:UIColor, pageHeaderColor: UIColor, tableViewSeparatorColor: UIColor, tableViewBackgroundColor: UIColor)
+    {
+        self.pageTitle.textColor = pageTitleColor
+        self.pageHeader.backgroundColor = pageHeaderColor
+        self.tableView.separatorColor = tableViewSeparatorColor
+        self.backgroundView.backgroundColor = tableViewBackgroundColor
+    }
+    
     
     func customizeCell(indexPath: NSIndexPath) -> UITableViewCell{
         var cell:UITableViewCell!
+        var colors = RVColors()
         
         if (dataDictionary[0] as? String == "About me"){
             
-            self.pageTitle.textColor = self.grayColor
-            self.pageHeader.backgroundColor = self.lightBlueColor
-            self.tableView.separatorColor = self.lightBlueColor
+            cellColors(colors.grayColor, pageHeaderColor: colors.lightBlueColor, tableViewSeparatorColor: colors.lightBlueColor,
+                tableViewBackgroundColor: colors.blueCellColor)
             
             let tableCell = tableView.dequeueReusableCellWithIdentifier("aboutMeCell") as! RVAboutMeTableViewCell
-            
-            
-            self.backgroundView.backgroundColor = UIColor(red: 102/255, green: 171/255, blue: 1, alpha: 0.05)
             tableCell.backgroundColor = UIColor.clearColor()
             
             if (indexPath.row == 0){
@@ -117,10 +117,14 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
                 tableCell.profileImage.layer.cornerRadius = tableCell.profileImage.frame.size.width / 2
                 tableCell.profileImage.clipsToBounds = true
                 tableCell.cellTitle.text = ""
+                
             }else{
+                
+                tableCell.profileImage.hidden = true
                 let aboutMeTitles = ["","Name", "Birthdate", "Born City", "Current City", "Education"]
                 tableCell.cellTitle.text = aboutMeTitles[indexPath.row]
                 tableCell.info.text = dataDictionary[indexPath.row + 1] as? String
+                
             }
             
             cell = tableCell
@@ -128,14 +132,10 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
             
         }else if (dataDictionary[0] as? String == "Experiences"){
             
-            
-            self.pageTitle.textColor = self.grayColor
-            self.pageHeader.backgroundColor = self.lightGreenColor
-            self.tableView.separatorColor = self.lightGreenColor
+            cellColors(colors.grayColor, pageHeaderColor: colors.lightGreenColor, tableViewSeparatorColor: colors.lightGreenColor,
+                tableViewBackgroundColor: colors.greenCellColor)
 
             let tableCell = tableView.dequeueReusableCellWithIdentifier("experiencesCell") as! RVExperiencesTableViewCell
-           
-            self.backgroundView.backgroundColor = UIColor(red: 113/255, green: 187/255, blue: 64/255, alpha: 0.05)
             tableCell.backgroundColor = UIColor.clearColor()
             
             tableCell.experienceTitle.text = dataDictionary[indexPath.row + 1][0] as? String
@@ -143,16 +143,14 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
             tableCell.experienceDescription.text = dataDictionary[indexPath.row + 1][2] as? String
             
             cell = tableCell
+            
         }else if(dataDictionary[0] as? String == "Technical Skills"){
             
-            self.pageTitle.textColor = self.grayColor
-            self.pageHeader.backgroundColor = self.lightOrangeColor
-            self.tableView.separatorColor = self.lightOrangeColor
-        
+            cellColors(colors.grayColor, pageHeaderColor: colors.lightOrangeColor, tableViewSeparatorColor: colors.lightOrangeColor,
+                tableViewBackgroundColor: colors.orangeCellColor)
+            
             let tableCell = tableView.dequeueReusableCellWithIdentifier("technicalSkillsCell") as! RVTechnicalSkillsTableViewCell
             
-            
-            self.backgroundView.backgroundColor = UIColor(red: 1, green: 171/255, blue: 102/255, alpha: 0.05)
             tableCell.backgroundColor = UIColor.clearColor()
             
             tableCell.technicalSkillsDescription.text = dataDictionary[indexPath.row + 1] as? String
@@ -160,16 +158,12 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
             
         }else if(dataDictionary[0] as? String == "Contact me"){
             
-            self.pageTitle.textColor = self.grayColor
-            self.pageHeader.backgroundColor = self.lightPurpleColor
-            self.tableView.separatorColor = self.lightPurpleColor
+            cellColors(colors.grayColor, pageHeaderColor: colors.lightPurpleColor, tableViewSeparatorColor: colors.lightPurpleColor,
+                tableViewBackgroundColor: colors.purpleCellColor)
             
             let tableCell = tableView.dequeueReusableCellWithIdentifier("contactsCell") as! RVContactsTableViewCell
-            self.backgroundView.backgroundColor = UIColor(red: 210/255, green: 72/255, blue: 122/255, alpha: 0.05)
             tableCell.backgroundColor = UIColor.clearColor()
             
-           
-
             tableCell.contactInfo.text = dataDictionary[indexPath.row + 1] as? String
             cell = tableCell
         

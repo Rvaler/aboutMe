@@ -101,6 +101,7 @@ class RVPageViewController: UIViewController, UIPageViewControllerDataSource, UI
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
+        //titleView.backgroundColor.
         //println("% = \(scrollView.contentOffset.x / self.view.frame.size.width)")
     }
     
