@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RVPageViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+class RVPageViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIScrollViewDelegate {
 
     var pageController: UIPageViewController?
     var pageContent = NSArray()
@@ -42,7 +42,14 @@ class RVPageViewController: UIViewController, UIPageViewControllerDataSource, UI
         pageController!.view.frame = pageViewRect
         pageController!.didMoveToParentViewController(self)
         
-        
+        for sview in pageController!.view.subviews
+        {
+            if(sview.isKindOfClass(UIScrollView))
+            {
+                let scrollV : UIScrollView = sview as! UIScrollView
+                scrollV.delegate = self
+            }
+        }
         // Do any additional setup after loading the view.
     }
 
@@ -66,7 +73,7 @@ class RVPageViewController: UIViewController, UIPageViewControllerDataSource, UI
         pageContent = pageStrings
     }
     
-    
+   
     func viewControllerAtIndex(index: Int) -> RVContentViewController? {
         
         if (pageContent.count == 0) ||
@@ -90,8 +97,10 @@ class RVPageViewController: UIViewController, UIPageViewControllerDataSource, UI
         dataViewController.dataDictionary = userInfo?.objectForKey(pageContent[index]) as! [(AnyObject)]
         return dataViewController
     }
-
     
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        println("% = \(scrollView.contentOffset.x / self.view.frame.size.width)")
+    }
     
     
     func indexOfViewController(viewController: RVContentViewController) -> Int {

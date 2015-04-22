@@ -66,6 +66,10 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
         return dataDictionary.count - 1
     }
     
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        println("% = \(scrollView.contentOffset.x / self.view.frame.size.width)")
+    }
+    
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
@@ -103,6 +107,7 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
             self.tableView.separatorColor = self.lightBlueColor
             
             let tableCell = tableView.dequeueReusableCellWithIdentifier("aboutMeCell") as! RVAboutMeTableViewCell
+            
             
             self.backgroundView.backgroundColor = UIColor(red: 102/255, green: 171/255, blue: 1, alpha: 0.05)
             tableCell.backgroundColor = UIColor.clearColor()
@@ -146,7 +151,10 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
         
             let tableCell = tableView.dequeueReusableCellWithIdentifier("technicalSkillsCell") as! RVTechnicalSkillsTableViewCell
             
-            self.backgroundView.backgroundColor = UIColor(red: 1, green: 171/255, blue: 102/255, alpha: 0.05)
+            UIView.animateWithDuration(2.0, animations: { () -> Void in
+                self.backgroundView.backgroundColor = UIColor(red: 1, green: 171/255, blue: 102/255, alpha: 0.05)
+            })
+            //self.backgroundView.backgroundColor = UIColor(red: 1, green: 171/255, blue: 102/255, alpha: 0.05)
             tableCell.backgroundColor = UIColor.clearColor()
             
             tableCell.technicalSkillsDescription.text = dataDictionary[indexPath.row + 1] as? String
@@ -173,6 +181,7 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
         
         return cell
     }
+    
     
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
