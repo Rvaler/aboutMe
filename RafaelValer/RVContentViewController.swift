@@ -67,7 +67,7 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        println("% = \(scrollView.contentOffset.x / self.view.frame.size.width)")
+       // println("% = \(scrollView.contentOffset.x / self.view.frame.size.width)")
     }
     
     
@@ -151,10 +151,8 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
         
             let tableCell = tableView.dequeueReusableCellWithIdentifier("technicalSkillsCell") as! RVTechnicalSkillsTableViewCell
             
-            UIView.animateWithDuration(2.0, animations: { () -> Void in
-                self.backgroundView.backgroundColor = UIColor(red: 1, green: 171/255, blue: 102/255, alpha: 0.05)
-            })
-            //self.backgroundView.backgroundColor = UIColor(red: 1, green: 171/255, blue: 102/255, alpha: 0.05)
+            
+            self.backgroundView.backgroundColor = UIColor(red: 1, green: 171/255, blue: 102/255, alpha: 0.05)
             tableCell.backgroundColor = UIColor.clearColor()
             
             tableCell.technicalSkillsDescription.text = dataDictionary[indexPath.row + 1] as? String

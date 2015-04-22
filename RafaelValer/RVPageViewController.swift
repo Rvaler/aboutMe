@@ -76,6 +76,8 @@ class RVPageViewController: UIViewController, UIPageViewControllerDataSource, UI
    
     func viewControllerAtIndex(index: Int) -> RVContentViewController? {
         
+        //println("index: \(index)")
+        //println("count: \(pageContent.count)")
         if (pageContent.count == 0) ||
             (index >= pageContent.count) {
                 return nil
@@ -99,13 +101,15 @@ class RVPageViewController: UIViewController, UIPageViewControllerDataSource, UI
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        println("% = \(scrollView.contentOffset.x / self.view.frame.size.width)")
+        //println("% = \(scrollView.contentOffset.x / self.view.frame.size.width)")
     }
     
     
     func indexOfViewController(viewController: RVContentViewController) -> Int {
         
         if let dataObject: AnyObject = viewController.dataObject{
+            println(pageContent.indexOfObject(dataObject))
+            indexOfPage = pageContent.indexOfObject(dataObject)
             return pageContent.indexOfObject(dataObject)
         }else{
             return NSNotFound
@@ -140,6 +144,9 @@ class RVPageViewController: UIViewController, UIPageViewControllerDataSource, UI
         }
         return viewControllerAtIndex(index)
     }
+    
+    
+
     
     /*
     // MARK: - Navigation
