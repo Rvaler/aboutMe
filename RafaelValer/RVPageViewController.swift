@@ -13,6 +13,11 @@ class RVPageViewController: UIViewController, UIPageViewControllerDataSource, UI
     var pageController: UIPageViewController?
     var pageContent = NSArray()
     var userInfo:NSDictionary?
+    var indexOfPage = 0
+    
+    @IBOutlet weak var titleView: UIView!
+    @IBOutlet weak var pageControllerView: UIView!
+    @IBOutlet weak var pageControllerSwitch: UIPageControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,11 +81,18 @@ class RVPageViewController: UIViewController, UIPageViewControllerDataSource, UI
         dataViewController.dataObject = pageContent[index]
         //dataViewController.dataDictionary = userInfo?.objectForKey(pageContent[index] as! String)
         //dataViewController.pageControl.currentPage = index
-        //print("valor \(index)")
+        
+        
+        dataViewController.pageController = self
+        
+        
         dataViewController.pageTitles = pageContent as! [(String)]
         dataViewController.dataDictionary = userInfo?.objectForKey(pageContent[index]) as! [(AnyObject)]
         return dataViewController
     }
+
+    
+    
     
     func indexOfViewController(viewController: RVContentViewController) -> Int {
         

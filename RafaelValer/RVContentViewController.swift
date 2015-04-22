@@ -10,7 +10,7 @@ import UIKit
 
 class RVContentViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    @IBOutlet weak var pageControl: UIPageControl!
+
     @IBOutlet var backgroundView: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var pageHeader: UIView!
@@ -20,6 +20,7 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
     var dataObject: AnyObject?
     var dataDictionary = [AnyObject]()
     
+    var pageController : RVPageViewController!
     
     var pageTitles = [String]()
     
@@ -32,14 +33,21 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setPageController()
-
+        //pageController = RVPageViewController()
+        
+        //setPageController()
+        
         tableView.delegate = self
         tableView.dataSource = self
         
         pageTitle.text = dataDictionary[0] as? String
         
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        setPageController()
+        print(dataDictionary[0])
     }
 
     override func didReceiveMemoryWarning() {
@@ -66,16 +74,21 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
         return cell
     }
     
-    func setPageController() {
+   func setPageController() {
+    
         let thisPage = dataDictionary[0] as? String
         if(thisPage == pageTitles[0]){
-            self.pageControl.currentPage = 0
+            pageController.pageControllerSwitch.currentPage = 0
+            pageController.pageControllerSwitch.currentPageIndicatorTintColor = self.lightBlueColor
         }else if(thisPage == pageTitles[1]){
-            self.pageControl.currentPage = 1
+            pageController.pageControllerSwitch.currentPage = 1
+            pageController.pageControllerSwitch.currentPageIndicatorTintColor = self.lightGreenColor
         }else if(thisPage == pageTitles[2]){
-            self.pageControl.currentPage = 2
+            pageController.pageControllerSwitch.currentPage = 2
+            pageController.pageControllerSwitch.currentPageIndicatorTintColor = self.lightOrangeColor
         }else{
-            self.pageControl.currentPage = 3
+            pageController.pageControllerSwitch.currentPage = 3
+            pageController.pageControllerSwitch.currentPageIndicatorTintColor = self.lightPurpleColor
         }
     }
     
