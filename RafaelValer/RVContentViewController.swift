@@ -157,12 +157,30 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
             cell = tableCell
             
         }else if(dataDictionary[0] as? String == "Contact me"){
+            let imageLinks = ["emailImage", "githubImage", "linkedinImage", "facebookImage"]
             
             cellColors(colors.grayColor, pageHeaderColor: colors.lightPurpleColor, tableViewSeparatorColor: colors.lightPurpleColor,
                 tableViewBackgroundColor: colors.purpleCellColor)
             
             let tableCell = tableView.dequeueReusableCellWithIdentifier("contactsCell") as! RVContactsTableViewCell
             tableCell.backgroundColor = UIColor.clearColor()
+
+            if(indexPath.row == 0)
+            {
+                tableCell.contactInfo?.hidden = false
+                tableCell.linkButton.hidden = true
+                
+                tableCell.contactInfo.text = dataDictionary[indexPath.row + 1] as? String
+            
+            }else{
+                
+                let buttonImage:UIImage? = UIImage(named: imageLinks[indexPath.row])
+                tableCell.linkButton.setBackgroundImage(buttonImage, forState: .Normal)
+                tableCell.contactInf = dataDictionary[indexPath.row + 1] as? String
+                tableCell.contactInfo?.hidden = true
+                tableCell.linkButton.hidden = false
+                
+            }
             
             tableCell.contactInfo.text = dataDictionary[indexPath.row + 1] as? String
             cell = tableCell
@@ -189,7 +207,10 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
         }else if(dataDictionary[0] as? String == "Technical Skills"){
             return 130
         }else if(dataDictionary[0] as? String == "Contact me"){
-            return 100
+            if(indexPath.row == 0){
+                return 70
+            }
+            return 150
         }
         
         return 200
