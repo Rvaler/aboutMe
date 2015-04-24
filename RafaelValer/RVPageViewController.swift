@@ -15,8 +15,14 @@ class RVPageViewController: UIViewController, UIPageViewControllerDataSource, UI
     var userInfo:NSDictionary?
     
     var indexOfPage = 0
+    var lastIndexOfPage = 0
     
     var lastContentOffset:CGFloat?
+    
+    var previousRed:CGFloat = 0
+    var previousGreen:CGFloat = 0
+    var previousBlue:CGFloat = 0
+    var previousAlpha:CGFloat = 0
     
     var currentRed:CGFloat = 0
     var currentGreen:CGFloat = 0
@@ -33,6 +39,8 @@ class RVPageViewController: UIViewController, UIPageViewControllerDataSource, UI
     
     var colors = RVColors()
     
+    var isDragging = 0
+    var beganDragging = 0
     
     @IBOutlet weak var titleView: UIView!
     @IBOutlet weak var pageControllerView: UIView!
@@ -107,7 +115,99 @@ class RVPageViewController: UIViewController, UIPageViewControllerDataSource, UI
         return dataViewController
         
     }
+/*
+    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        
+        let colorsArray = [colors.lightBlueColor, colors.lightGreenColor, colors.lightOrangeColor, colors.lightPurpleColor]
+        
+        var previousColor:UIColor?
+        var nextColor:UIColor?
+        
+        var currentColor = colorsArray[indexOfPage]
+        
+        if(indexOfPage > 0){
+            previousColor = colorsArray[indexOfPage - 1]
+        }
+        if(indexOfPage < colorsArray.count - 1){
+            nextColor = colorsArray[indexOfPage + 1]
+        }
+        
+        
+        currentColor.getRed(&currentRed, green: &currentGreen, blue: &currentBlue, alpha: &currentAlpha)
+        nextColor?.getRed(&nextRed, green: &nextGreen, blue: &nextBlue, alpha: &nextAlpha)
+        previousColor?.getRed(&previousRed, green: &previousGreen, blue: &previousBlue, alpha: &previousAlpha)
+        
+        println("will begin draggin")
+        isDragging = 1
+    }
     
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        println("acabou")
+
+        isDragging = 0
+    }
+    
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        println(indexOfPage)
+        
+        
+        if (isDragging == 1){
+            
+            if (self.lastContentOffset > scrollView.contentOffset.x){
+                
+                direction = "left"
+                    
+            }else if (self.lastContentOffset < scrollView.contentOffset.x){
+            
+                direction = "right"
+                    
+            
+            }
+        }
+        
+    
+    
+
+    
+        
+        
+        self.lastContentOffset = scrollView.contentOffset.x;
+        
+        var teste: CGFloat = (scrollView.contentOffset.x) / (self.view.frame.size.width)
+        
+        if(teste >= 1.99 || teste <= 0.01){
+            isDragging = 0
+        }
+        
+        var newRed:CGFloat?
+        var newGreen:CGFloat?
+        var newBlue:CGFloat?
+        
+        
+    
+        if(direction == "right" && isDragging == 1 ){
+                //println("draggin direita")
+            newRed = (2.0 - teste) * currentRed + (teste - 1) * nextRed
+            newGreen = (2.0 - teste) * currentGreen + (teste - 1) * nextGreen
+            newBlue = (2.0 - teste) * currentBlue + (teste - 1) * nextBlue
+                
+            titleView.backgroundColor = UIColor(red: newRed!, green: newGreen!, blue: newBlue!, alpha: 1)
+        }
+        else if(direction == "left" && isDragging == 1){
+            newRed = teste * currentRed + (1 - teste) * previousRed
+            newGreen = teste * currentGreen + (1 - teste) * previousGreen
+            newBlue = teste * currentBlue + (1 - teste) * previousBlue
+            
+            titleView.backgroundColor = UIColor(red: newRed!, green: newGreen!, blue: newBlue!, alpha: 1)
+        }
+    }
+ */
+    
+    
+
+    /// VERSION WITH BUGS, BUT RELATIVELY WORKING
+/*
     func scrollViewDidScroll(scrollView: UIScrollView) {
         
         let colorsArray = [colors.lightBlueColor, colors.lightGreenColor, colors.lightOrangeColor, colors.lightPurpleColor]
@@ -183,7 +283,7 @@ class RVPageViewController: UIViewController, UIPageViewControllerDataSource, UI
             
         
     }
-    
+   */
     
     func indexOfViewController(viewController: RVContentViewController) -> Int {
         

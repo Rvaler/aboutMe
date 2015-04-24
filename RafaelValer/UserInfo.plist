@@ -6,16 +6,16 @@
 	<array>
 		<string>My Projects</string>
 		<array>
-			<string>MakeMyDebt</string>
-			<string>description of make my debt</string>
-		</array>
-		<array>
 			<string>MOG</string>
-			<string>description of Mog</string>
+			<string>Manage Our Game is a project to develop an app that helps people organize their soccer games. </string>
 		</array>
 		<array>
 			<string>Colaborê</string>
-			<string>Description of colabore</string>
+			<string>Porto Alegre is a city with various urban problems, with this app will be possible to people report them, so they can be quickly resolved</string>
+		</array>
+		<array>
+			<string>Gimme Back</string>
+			<string>An application that remembers you about what have you lent or borrowed from other people.</string>
 		</array>
 	</array>
 	<key>Contact me</key>

@@ -90,6 +90,7 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
         self.pageTitle.textColor = pageTitleColor
         self.tableView.separatorColor = tableViewSeparatorColor
         self.backgroundView.backgroundColor = tableViewBackgroundColor
+        self.pageHeader.backgroundColor = pageHeaderColor
     }
     
     
@@ -164,18 +165,20 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
     {
         
-        if (dataDictionary[0] as? String == "About me"){
+        if (pageTitle.text == pageTitles[0]){
             if (indexPath.row == 0){
                 return 225
             }else if (indexPath.row == 5){
                 return 280
             }
             return 100
-        }else if(dataDictionary[0] as? String == "Experiences"){
+            
+        }else if(pageTitle.text == pageTitles[1]){
             return 200
-        }else if(dataDictionary[0] as? String == "Technical Skills"){
+        }else if(pageTitle.text == pageTitles[2]){
             return 130
-        }else if(dataDictionary[0] as? String == "Contact me"){
+        }else if(pageTitle.text == pageTitles[3]){
+            
             if(indexPath.row == 0){
                 return 70
             }
