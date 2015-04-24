@@ -16,7 +16,18 @@ class RVPageViewController: UIViewController, UIPageViewControllerDataSource, UI
     var indexOfPage = 0
     var lastContentOffset:CGFloat?
     
-    var scrollDidBegan = 0
+    var currentRed:CGFloat = 0
+    var currentGreen:CGFloat = 0
+    var currentBlue:CGFloat = 0
+    var currentAlpha:CGFloat = 0
+    
+    var nextRed:CGFloat = 0
+    var nextGreen:CGFloat = 0
+    var nextBlue:CGFloat = 0
+    var nextAlpha:CGFloat = 0
+    
+    var scrollFinished = 0
+    var direction:String?
     
     @IBOutlet weak var titleView: UIView!
     @IBOutlet weak var pageControllerView: UIView!
@@ -108,45 +119,42 @@ class RVPageViewController: UIViewController, UIPageViewControllerDataSource, UI
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
         //titleView.backgroundColor.
-        scrollDidBegan = 1
+        
         var colors = RVColors()
         let colorsArray = [colors.lightBlueColor, colors.lightGreenColor, colors.lightOrangeColor, colors.lightPurpleColor]
         
         
-        //println(colorsArray[0].CIColor.red())
         
-        var currentRed:CGFloat = 0
-        var currentGreen:CGFloat = 0
-        var currentBlue:CGFloat = 0
-        var currentAlpha:CGFloat = 0
-        
-        var nextRed:CGFloat = 0
-        var nextGreen:CGFloat = 0
-        var nextBlue:CGFloat = 0
-        var nextAlpha:CGFloat = 0
-        
-        
-        if (self.lastContentOffset > scrollView.contentOffset.x){
-            var nextColor = colorsArray[indexOfPage + 1]
-            var currentColor = colorsArray[indexOfPage]
-            
-            
-            nextColor.getRed(&currentRed, green: &currentGreen, blue: &currentBlue, alpha: &currentAlpha)
-            
-            currentColor.getRed(&nextRed, green: &nextGreen, blue: &nextBlue, alpha: &nextAlpha)
-            
-            
-        }
-            
-        else if (self.lastContentOffset < scrollView.contentOffset.x){
-            var nextColor = colorsArray[indexOfPage + 1]
-            var currentColor = colorsArray[indexOfPage]
-            
-            currentColor.getRed(&currentRed, green: &currentGreen, blue: &currentBlue, alpha: &currentAlpha)
-            
-            nextColor.getRed(&nextRed, green: &nextGreen, blue: &nextBlue, alpha: &nextAlpha)
-
-            
+        if(scrollFinished == 0){
+            if (self.lastContentOffset > scrollView.contentOffset.x){
+                if(indexOfPage > 0){
+                    var nextColor = colorsArray[indexOfPage - 1]
+                    var currentColor = colorsArray[indexOfPage]
+                    
+                    
+                    currentColor.getRed(&currentRed, green: &currentGreen, blue: &currentBlue, alpha: &currentAlpha)
+                    
+                    nextColor.getRed(&nextRed, green: &nextGreen, blue: &nextBlue, alpha: &nextAlpha)
+                    
+                    direction = "left"
+                }
+            }
+                
+            else if (self.lastContentOffset < scrollView.contentOffset.x){
+                if(indexOfPage < colorsArray.count - 1){
+                    var nextColor = colorsArray[indexOfPage + 1]
+                    var currentColor = colorsArray[indexOfPage]
+                    
+                    currentColor.getRed(&currentRed, green: &currentGreen, blue: &currentBlue, alpha: &currentAlpha)
+                    
+                    nextColor.getRed(&nextRed, green: &nextGreen, blue: &nextBlue, alpha: &nextAlpha)
+                    
+                    direction = "right"
+                }
+                
+                
+            }
+            scrollFinished = 1
         }
         
         
@@ -154,12 +162,37 @@ class RVPageViewController: UIViewController, UIPageViewControllerDataSource, UI
         
         var teste: CGFloat = (scrollView.contentOffset.x) / (self.view.frame.size.width)
         
-        var newRed:CGFloat = (2.0 - teste) * currentRed + (teste - 1) * nextRed
-        var newGreen:CGFloat = (2.0 - teste) * currentGreen + (teste - 1) * nextGreen
-        var newBlue:CGFloat = (2.0 - teste) * currentBlue + (teste - 1) * nextBlue
+        if(teste <= 1.01 || teste >= 1.99){
+            scrollFinished = 0
+        }
         
-        println(teste)
-        titleView.backgroundColor = UIColor(red: newRed, green: newGreen, blue: newBlue, alpha: 1)
+//        
+//        var newRed:CGFloat = (2.0 - teste) * currentRed + (teste - 1) * nextRed
+//        var newGreen:CGFloat = (2.0 - teste) * currentGreen + (teste - 1) * nextGreen
+//        var newBlue:CGFloat = (2.0 - teste) * currentBlue + (teste - 1) * nextBlue
+        
+        //        newRed = teste * currentRed + (1 - teste) * nextRed
+        //        newGreen = teste * currentGreen + (1 - teste) * nextGreen
+        //        newBlue = teste * currentBlue + (1 - teste) * nextBlue
+        
+        var newRed:CGFloat?
+        var newGreen:CGFloat?
+        var newBlue:CGFloat?
+        
+        println(direction)
+        
+        if(direction == "right"){
+            newRed = (2.0 - teste) * currentRed + (teste - 1) * nextRed
+            newGreen = (2.0 - teste) * currentGreen + (teste - 1) * nextGreen
+            newBlue = (2.0 - teste) * currentBlue + (teste - 1) * nextBlue
+        }
+        else if(direction == "left"){
+            newRed = teste * currentRed + (1 - teste) * nextRed
+            newGreen = teste * currentGreen + (1 - teste) * nextGreen
+            newBlue = teste * currentBlue + (1 - teste) * nextBlue
+        }
+        
+        titleView.backgroundColor = UIColor(red: newRed!, green: newGreen!, blue: newBlue!, alpha: 1)
         
     }
     
