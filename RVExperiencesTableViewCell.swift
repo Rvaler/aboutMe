@@ -13,6 +13,7 @@ class RVExperiencesTableViewCell: UITableViewCell {
     @IBOutlet weak var experienceTitle: UILabel!
     @IBOutlet weak var experiencePeriod: UILabel!
     @IBOutlet weak var experienceDescription: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,4 +25,11 @@ class RVExperiencesTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    func customizeExperiencesCell(tableCell:RVExperiencesTableViewCell, indexPath:NSIndexPath, dataDictionary:[AnyObject]){
+        
+        tableCell.experienceTitle.text = dataDictionary[indexPath.row + 1][0] as? String
+        tableCell.experiencePeriod.text = dataDictionary[indexPath.row + 1][1] as? String
+        tableCell.experienceDescription.text = dataDictionary[indexPath.row + 1][2] as? String
+        
+    }
 }

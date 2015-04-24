@@ -21,5 +21,9 @@ class RVTechnicalSkillsTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func customizeTechnicalSkillsCell(tableCell:RVTechnicalSkillsTableViewCell, indexPath:NSIndexPath, dataDictionary:[AnyObject]){
 
+        tableCell.technicalSkillsDescription.text = dataDictionary[indexPath.row + 1] as? String
+    }
 }

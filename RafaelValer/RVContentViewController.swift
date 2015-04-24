@@ -22,7 +22,6 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
     var pageController : RVPageViewController!
     var pageTitles = [String]()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,11 +29,12 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
         tableView.dataSource = self
         
         pageTitle.text = dataDictionary[0] as? String
-        println("dataDicionary: \(dataDictionary[0])")
+ 
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool)
+    {
         setPageController()
     }
 
@@ -46,7 +46,8 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
     // MARK: - Table view data source
     
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
         //plist has one attribute to set the title of view
@@ -54,12 +55,12 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
     }
 
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
         let cell:UITableViewCell = customizeCell(indexPath)
-
         return cell
     }
+    
     
     func setPageController() {
     
@@ -76,7 +77,7 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
         }else if(thisPage == pageTitles[2]){
             pageController.pageControllerSwitch.currentPage = 2
             pageController.pageControllerSwitch.currentPageIndicatorTintColor = colors.lightOrangeColor
-        }else{
+        }else if(thisPage == pageTitles[3]){
             pageController.pageControllerSwitch.currentPage = 3
             pageController.pageControllerSwitch.currentPageIndicatorTintColor = colors.lightPurpleColor
         }
@@ -92,11 +93,15 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     
-    func customizeCell(indexPath: NSIndexPath) -> UITableViewCell{
-        var cell:UITableViewCell!
-        var colors = RVColors()
+    func customizeCell(indexPath: NSIndexPath) -> UITableViewCell
+    {
         
-        if (dataDictionary[0] as? String == "About me"){
+        var cell:UITableViewCell!
+        let colors = RVColors()
+        
+        // customizing cells of page ABOUT ME
+        
+        if (pageTitle.text == pageTitles[0]){
             
             cellColors(colors.grayColor, pageHeaderColor: colors.lightBlueColor, tableViewSeparatorColor: colors.lightBlueColor,
                 tableViewBackgroundColor: colors.blueCellColor)
@@ -104,25 +109,14 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
             let tableCell = tableView.dequeueReusableCellWithIdentifier("aboutMeCell") as! RVAboutMeTableViewCell
             tableCell.backgroundColor = UIColor.clearColor()
             
-            if (indexPath.row == 0){
-                tableCell.profileImage.hidden = false
-                tableCell.profileImage.layer.cornerRadius = tableCell.profileImage.frame.size.width / 2
-                tableCell.profileImage.clipsToBounds = true
-                tableCell.cellTitle.text = ""
-                
-            }else{
-                
-                tableCell.profileImage.hidden = true
-                let aboutMeTitles = ["","Name", "Birthdate", "Born City", "Current City", "Education"]
-                tableCell.cellTitle.text = aboutMeTitles[indexPath.row]
-                tableCell.info.text = dataDictionary[indexPath.row + 1] as? String
-                
-            }
+            tableCell.customizeAboutMeCell(tableCell, indexPath: indexPath, dataDictionary: dataDictionary)
             
             cell = tableCell
             
             
-        }else if (dataDictionary[0] as? String == "Experiences"){
+        // customizing cells of page EXPERIENCES
+            
+        }else if (pageTitle.text == pageTitles[1]){
             
             cellColors(colors.grayColor, pageHeaderColor: colors.lightGreenColor, tableViewSeparatorColor: colors.lightGreenColor,
                 tableViewBackgroundColor: colors.greenCellColor)
@@ -130,63 +124,46 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
             let tableCell = tableView.dequeueReusableCellWithIdentifier("experiencesCell") as! RVExperiencesTableViewCell
             tableCell.backgroundColor = UIColor.clearColor()
             
-            tableCell.experienceTitle.text = dataDictionary[indexPath.row + 1][0] as? String
-            tableCell.experiencePeriod.text = dataDictionary[indexPath.row + 1][1] as? String
-            tableCell.experienceDescription.text = dataDictionary[indexPath.row + 1][2] as? String
+            tableCell.customizeExperiencesCell(tableCell, indexPath: indexPath, dataDictionary: dataDictionary)
             
             cell = tableCell
+        
             
-        }else if(dataDictionary[0] as? String == "Technical Skills"){
+        // customizing cells of page TECHNICAL SKILLS
+            
+        }else if(pageTitle.text == pageTitles[2]){
             
             cellColors(colors.grayColor, pageHeaderColor: colors.lightOrangeColor, tableViewSeparatorColor: colors.lightOrangeColor,
                 tableViewBackgroundColor: colors.orangeCellColor)
             
             let tableCell = tableView.dequeueReusableCellWithIdentifier("technicalSkillsCell") as! RVTechnicalSkillsTableViewCell
-            
             tableCell.backgroundColor = UIColor.clearColor()
             
-            tableCell.technicalSkillsDescription.text = dataDictionary[indexPath.row + 1] as? String
+            tableCell.customizeTechnicalSkillsCell(tableCell, indexPath: indexPath, dataDictionary: dataDictionary)
             cell = tableCell
+        
             
-        }else if(dataDictionary[0] as? String == "Contact me"){
-            let imageLinks = ["emailImage", "githubImage", "linkedinImage", "facebookImage"]
+        // customizing cells of CONTACT ME
+            
+        }else if(pageTitle.text == pageTitles[3]){
             
             cellColors(colors.grayColor, pageHeaderColor: colors.lightPurpleColor, tableViewSeparatorColor: colors.lightPurpleColor,
                 tableViewBackgroundColor: colors.purpleCellColor)
             
             let tableCell = tableView.dequeueReusableCellWithIdentifier("contactsCell") as! RVContactsTableViewCell
             tableCell.backgroundColor = UIColor.clearColor()
-
-            if(indexPath.row == 0)
-            {
-                tableCell.contactInfo?.hidden = false
-                tableCell.linkButton.hidden = true
-                
-                tableCell.contactInfo.text = dataDictionary[indexPath.row + 1] as? String
             
-            }else{
-                
-                let buttonImage:UIImage? = UIImage(named: imageLinks[indexPath.row])
-                tableCell.linkButton.setBackgroundImage(buttonImage, forState: .Normal)
-                tableCell.contactInf = dataDictionary[indexPath.row + 1] as? String
-                tableCell.contactInfo?.hidden = true
-                tableCell.linkButton.hidden = false
-                
-            }
-            
-            tableCell.contactInfo.text = dataDictionary[indexPath.row + 1] as? String
+            tableCell.customizeAboutMeCell(tableCell, indexPath: indexPath, dataDictionary: dataDictionary)
             cell = tableCell
-        
-        }else{
-            cell = tableView.dequeueReusableCellWithIdentifier("aboutMeCell") as! RVAboutMeTableViewCell
         }
-        
         return cell
     }
     
     
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    {
+        
         if (dataDictionary[0] as? String == "About me"){
             if (indexPath.row == 0){
                 return 225
@@ -204,8 +181,8 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
             }
             return 150
         }
-        
         return 200
+        
     }
     
     /*
