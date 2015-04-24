@@ -29,6 +29,9 @@ class RVPageViewController: UIViewController, UIPageViewControllerDataSource, UI
     var scrollFinished = 0
     var direction:String?
     
+    var colors = RVColors()
+    
+    
     @IBOutlet weak var titleView: UIView!
     @IBOutlet weak var pageControllerView: UIView!
     @IBOutlet weak var pageControllerSwitch: UIPageControl!
@@ -51,6 +54,7 @@ class RVPageViewController: UIViewController, UIPageViewControllerDataSource, UI
         self.addChildViewController(pageController!)
         self.view.addSubview(self.pageController!.view)
         
+        titleView.backgroundColor = colors.lightBlueColor
         
         var pageViewRect = self.view.bounds
         pageController!.view.frame = pageViewRect
@@ -90,8 +94,6 @@ class RVPageViewController: UIViewController, UIPageViewControllerDataSource, UI
    
     func viewControllerAtIndex(index: Int) -> RVContentViewController? {
         
-        //println("index: \(index)")
-        //println("count: \(pageContent.count)")
         if (pageContent.count == 0) ||
             (index >= pageContent.count) {
                 return nil
@@ -102,9 +104,6 @@ class RVPageViewController: UIViewController, UIPageViewControllerDataSource, UI
         let dataViewController = storyBoard.instantiateViewControllerWithIdentifier("contentView") as! RVContentViewController
         
         dataViewController.dataObject = pageContent[index]
-        //dataViewController.dataDictionary = userInfo?.objectForKey(pageContent[index] as! String)
-        //dataViewController.pageControl.currentPage = index
-        
         
         dataViewController.pageController = self
         
@@ -120,12 +119,11 @@ class RVPageViewController: UIViewController, UIPageViewControllerDataSource, UI
     func scrollViewDidScroll(scrollView: UIScrollView) {
         //titleView.backgroundColor.
         
-        var colors = RVColors()
+        
         let colorsArray = [colors.lightBlueColor, colors.lightGreenColor, colors.lightOrangeColor, colors.lightPurpleColor]
         
-        
-        
         if(scrollFinished == 0){
+
             if (self.lastContentOffset > scrollView.contentOffset.x){
                 if(indexOfPage > 0){
                     var nextColor = colorsArray[indexOfPage - 1]
@@ -155,6 +153,7 @@ class RVPageViewController: UIViewController, UIPageViewControllerDataSource, UI
                 
             }
             scrollFinished = 1
+            
         }
         
         
@@ -162,37 +161,36 @@ class RVPageViewController: UIViewController, UIPageViewControllerDataSource, UI
         
         var teste: CGFloat = (scrollView.contentOffset.x) / (self.view.frame.size.width)
         
-        if(teste <= 1.01 || teste >= 1.99){
+        
+        if((teste <= 1.01 || teste >= 1.99 ) && direction == "right"){
+            scrollFinished = 0
+        }
+        if((teste <= 0.01 || teste >= 0.99 ) && direction == "left"){
             scrollFinished = 0
         }
         
-//        
-//        var newRed:CGFloat = (2.0 - teste) * currentRed + (teste - 1) * nextRed
-//        var newGreen:CGFloat = (2.0 - teste) * currentGreen + (teste - 1) * nextGreen
-//        var newBlue:CGFloat = (2.0 - teste) * currentBlue + (teste - 1) * nextBlue
-        
-        //        newRed = teste * currentRed + (1 - teste) * nextRed
-        //        newGreen = teste * currentGreen + (1 - teste) * nextGreen
-        //        newBlue = teste * currentBlue + (1 - teste) * nextBlue
         
         var newRed:CGFloat?
         var newGreen:CGFloat?
         var newBlue:CGFloat?
         
-        println(direction)
         
-        if(direction == "right"){
+        
+        if(direction == "right" && scrollFinished == 1 ){
             newRed = (2.0 - teste) * currentRed + (teste - 1) * nextRed
             newGreen = (2.0 - teste) * currentGreen + (teste - 1) * nextGreen
             newBlue = (2.0 - teste) * currentBlue + (teste - 1) * nextBlue
+            
+            titleView.backgroundColor = UIColor(red: newRed!, green: newGreen!, blue: newBlue!, alpha: 1)
         }
-        else if(direction == "left"){
+        else if(direction == "left" && scrollFinished == 1){
             newRed = teste * currentRed + (1 - teste) * nextRed
             newGreen = teste * currentGreen + (1 - teste) * nextGreen
             newBlue = teste * currentBlue + (1 - teste) * nextBlue
+            
+            titleView.backgroundColor = UIColor(red: newRed!, green: newGreen!, blue: newBlue!, alpha: 1)
         }
-        
-        titleView.backgroundColor = UIColor(red: newRed!, green: newGreen!, blue: newBlue!, alpha: 1)
+            
         
     }
     
@@ -200,7 +198,6 @@ class RVPageViewController: UIViewController, UIPageViewControllerDataSource, UI
     func indexOfViewController(viewController: RVContentViewController) -> Int {
         
         if let dataObject: AnyObject = viewController.dataObject{
-            println(pageContent.indexOfObject(dataObject))
             indexOfPage = pageContent.indexOfObject(dataObject)
             return pageContent.indexOfObject(dataObject)
         }else{
