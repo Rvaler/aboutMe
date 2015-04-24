@@ -13,7 +13,9 @@ class RVPageViewController: UIViewController, UIPageViewControllerDataSource, UI
     var pageController: UIPageViewController?
     var pageContent = NSArray()
     var userInfo:NSDictionary?
+    
     var indexOfPage = 0
+    
     var lastContentOffset:CGFloat?
     
     var currentRed:CGFloat = 0
@@ -80,15 +82,8 @@ class RVPageViewController: UIViewController, UIPageViewControllerDataSource, UI
         
         let dic = RVUserInfo.init()
         userInfo = dic.info
+        pageContent = ["About me", "Experiences", "Technical Skills", "Contact me"]
         
-        var pageStrings = [String]()
-        
-        pageStrings.append("About me")
-        pageStrings.append("Experiences")
-        pageStrings.append("Technical Skills")
-        pageStrings.append("Contact me")
-        
-        pageContent = pageStrings
     }
     
    
@@ -107,19 +102,13 @@ class RVPageViewController: UIViewController, UIPageViewControllerDataSource, UI
         
         dataViewController.pageController = self
         
-        
         dataViewController.pageTitles = pageContent as! [(String)]
         dataViewController.dataDictionary = userInfo?.objectForKey(pageContent[index]) as! [(AnyObject)]
         return dataViewController
         
     }
     
-
-
-    
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        //titleView.backgroundColor.
-        
         
         let colorsArray = [colors.lightBlueColor, colors.lightGreenColor, colors.lightOrangeColor, colors.lightPurpleColor]
         

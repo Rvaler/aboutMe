@@ -33,8 +33,7 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear(animated: Bool)
-    {
+    override func viewDidAppear(animated: Bool) {
         setPageController()
     }
 
@@ -50,6 +49,7 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
     {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
+        
         //plist has one attribute to set the title of view
         return dataDictionary.count - 1
     }
