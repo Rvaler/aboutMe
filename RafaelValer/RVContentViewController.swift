@@ -19,32 +19,23 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
     
     var dataObject: AnyObject?
     var dataDictionary = [AnyObject]()
-    
     var pageController : RVPageViewController!
-    
     var pageTitles = [String]()
-    
-    let grayColor = UIColor(red: 246/255, green: 246/255, blue: 246/255, alpha: 1.0)
-    let lightBlueColor = UIColor(red: 102/255, green: 171/255, blue: 1, alpha: 1.0)
-    let lightOrangeColor = UIColor(red: 1, green: 171/255, blue: 102/255, alpha: 1.0)
-    let lightGreenColor = UIColor(red: 113/255, green: 187/255, blue: 64/255, alpha: 1.0)
-    let lightPurpleColor = UIColor(red: 210/255, green: 72/255, blue: 122/255, alpha: 1.0)
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //pageController = RVPageViewController()
         
         tableView.delegate = self
         tableView.dataSource = self
-        pageTitle.text = dataDictionary[0] as? String
         
+        pageTitle.text = dataDictionary[0] as? String
+        println("dataDicionary: \(dataDictionary[0])")
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(animated: Bool) {
         setPageController()
-        print(dataDictionary[0])
     }
 
     override func didReceiveMemoryWarning() {
@@ -70,28 +61,32 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
         return cell
     }
     
-   func setPageController() {
+    func setPageController() {
     
-        let thisPage = dataDictionary[0] as? String
+    if let thisPage = dataDictionary[0] as? String{
+        
+        let colors = RVColors()
+        
         if(thisPage == pageTitles[0]){
             pageController.pageControllerSwitch.currentPage = 0
-            pageController.pageControllerSwitch.currentPageIndicatorTintColor = self.lightBlueColor
+            pageController.pageControllerSwitch.currentPageIndicatorTintColor = colors.lightBlueColor
         }else if(thisPage == pageTitles[1]){
             pageController.pageControllerSwitch.currentPage = 1
-            pageController.pageControllerSwitch.currentPageIndicatorTintColor = self.lightGreenColor
+            pageController.pageControllerSwitch.currentPageIndicatorTintColor = colors.lightGreenColor
         }else if(thisPage == pageTitles[2]){
             pageController.pageControllerSwitch.currentPage = 2
-            pageController.pageControllerSwitch.currentPageIndicatorTintColor = self.lightOrangeColor
+            pageController.pageControllerSwitch.currentPageIndicatorTintColor = colors.lightOrangeColor
         }else{
             pageController.pageControllerSwitch.currentPage = 3
-            pageController.pageControllerSwitch.currentPageIndicatorTintColor = self.lightPurpleColor
+            pageController.pageControllerSwitch.currentPageIndicatorTintColor = colors.lightPurpleColor
         }
+    }
+    
     }
     
     func cellColors(pageTitleColor:UIColor, pageHeaderColor: UIColor, tableViewSeparatorColor: UIColor, tableViewBackgroundColor: UIColor)
     {
         self.pageTitle.textColor = pageTitleColor
-        //self.pageHeader.backgroundColor = pageHeaderColor
         self.tableView.separatorColor = tableViewSeparatorColor
         self.backgroundView.backgroundColor = tableViewBackgroundColor
     }

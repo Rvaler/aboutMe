@@ -22,24 +22,4 @@ class RVColors {
     let orangeCellColor = UIColor(red: 1, green: 171/255, blue: 102/255, alpha: 0.05)
     let purpleCellColor = UIColor(red: 210/255, green: 72/255, blue: 122/255, alpha: 0.05)
     
-    func getGrayColor() -> UIColor{
-        return grayColor
-    }
-    
-    func getLightBlueColor() -> UIColor{
-        return lightBlueColor
-    }
-    
-    func getLightOrangeColor() -> UIColor{
-        return lightOrangeColor
-    }
-    
-    func getLightGreenColor() -> UIColor{
-        return lightGreenColor
-    }
-    
-    func getLightPurpleColor() -> UIColor{
-        return lightPurpleColor
-    }
-    
 }
