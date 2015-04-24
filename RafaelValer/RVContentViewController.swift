@@ -61,10 +61,7 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
         //plist has one attribute to set the title of view
         return dataDictionary.count - 1
     }
-    
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-        println("% = \(scrollView.contentOffset.x / self.view.frame.size.width)")
-    }
+
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
@@ -94,7 +91,7 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
     func cellColors(pageTitleColor:UIColor, pageHeaderColor: UIColor, tableViewSeparatorColor: UIColor, tableViewBackgroundColor: UIColor)
     {
         self.pageTitle.textColor = pageTitleColor
-        self.pageHeader.backgroundColor = pageHeaderColor
+        //self.pageHeader.backgroundColor = pageHeaderColor
         self.tableView.separatorColor = tableViewSeparatorColor
         self.backgroundView.backgroundColor = tableViewBackgroundColor
     }

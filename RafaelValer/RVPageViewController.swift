@@ -14,6 +14,9 @@ class RVPageViewController: UIViewController, UIPageViewControllerDataSource, UI
     var pageContent = NSArray()
     var userInfo:NSDictionary?
     var indexOfPage = 0
+    var lastContentOffset:CGFloat?
+    
+    var scrollDidBegan = 0
     
     @IBOutlet weak var titleView: UIView!
     @IBOutlet weak var pageControllerView: UIView!
@@ -100,9 +103,64 @@ class RVPageViewController: UIViewController, UIPageViewControllerDataSource, UI
         return dataViewController
     }
     
+
+
+    
     func scrollViewDidScroll(scrollView: UIScrollView) {
         //titleView.backgroundColor.
-        //println("% = \(scrollView.contentOffset.x / self.view.frame.size.width)")
+        scrollDidBegan = 1
+        var colors = RVColors()
+        let colorsArray = [colors.lightBlueColor, colors.lightGreenColor, colors.lightOrangeColor, colors.lightPurpleColor]
+        
+        
+        //println(colorsArray[0].CIColor.red())
+        
+        var currentRed:CGFloat = 0
+        var currentGreen:CGFloat = 0
+        var currentBlue:CGFloat = 0
+        var currentAlpha:CGFloat = 0
+        
+        var nextRed:CGFloat = 0
+        var nextGreen:CGFloat = 0
+        var nextBlue:CGFloat = 0
+        var nextAlpha:CGFloat = 0
+        
+        
+        if (self.lastContentOffset > scrollView.contentOffset.x){
+            var nextColor = colorsArray[indexOfPage + 1]
+            var currentColor = colorsArray[indexOfPage]
+            
+            
+            nextColor.getRed(&currentRed, green: &currentGreen, blue: &currentBlue, alpha: &currentAlpha)
+            
+            currentColor.getRed(&nextRed, green: &nextGreen, blue: &nextBlue, alpha: &nextAlpha)
+            
+            
+        }
+            
+        else if (self.lastContentOffset < scrollView.contentOffset.x){
+            var nextColor = colorsArray[indexOfPage + 1]
+            var currentColor = colorsArray[indexOfPage]
+            
+            currentColor.getRed(&currentRed, green: &currentGreen, blue: &currentBlue, alpha: &currentAlpha)
+            
+            nextColor.getRed(&nextRed, green: &nextGreen, blue: &nextBlue, alpha: &nextAlpha)
+
+            
+        }
+        
+        
+        self.lastContentOffset = scrollView.contentOffset.x;
+        
+        var teste: CGFloat = (scrollView.contentOffset.x) / (self.view.frame.size.width)
+        
+        var newRed:CGFloat = (2.0 - teste) * currentRed + (teste - 1) * nextRed
+        var newGreen:CGFloat = (2.0 - teste) * currentGreen + (teste - 1) * nextGreen
+        var newBlue:CGFloat = (2.0 - teste) * currentBlue + (teste - 1) * nextBlue
+        
+        println(teste)
+        titleView.backgroundColor = UIColor(red: newRed, green: newGreen, blue: newBlue, alpha: 1)
+        
     }
     
     
