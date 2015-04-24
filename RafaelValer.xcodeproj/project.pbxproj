@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		543E43A81AEA7F0200593B6D /* RVIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543E43A71AEA7F0200593B6D /* RVIntroViewController.swift */; };
 		545D0BCF1AE68BE9002D972C /* RVExperiencesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545D0BCE1AE68BE9002D972C /* RVExperiencesTableViewCell.swift */; };
 		545D0BD11AE6B9D4002D972C /* RVTechnicalSkillsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545D0BD01AE6B9D4002D972C /* RVTechnicalSkillsTableViewCell.swift */; };
 		545D0BD31AE6C409002D972C /* RVContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545D0BD21AE6C409002D972C /* RVContactsTableViewCell.swift */; };
@@ -35,7 +34,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		543E43A71AEA7F0200593B6D /* RVIntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RVIntroViewController.swift; sourceTree = "<group>"; };
 		545D0BCE1AE68BE9002D972C /* RVExperiencesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RVExperiencesTableViewCell.swift; path = ../RVExperiencesTableViewCell.swift; sourceTree = "<group>"; };
 		545D0BD01AE6B9D4002D972C /* RVTechnicalSkillsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RVTechnicalSkillsTableViewCell.swift; sourceTree = "<group>"; };
 		545D0BD21AE6C409002D972C /* RVContactsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RVContactsTableViewCell.swift; sourceTree = "<group>"; };
@@ -103,7 +101,6 @@
 				54D7BB311AE5D2C9004C9B51 /* RVUserInfo.swift */,
 				54D7BB331AE5D2F8004C9B51 /* UserInfo.plist */,
 				54D7BB111AE5C0F4004C9B51 /* Main.storyboard */,
-				543E43A71AEA7F0200593B6D /* RVIntroViewController.swift */,
 				545D0BD21AE6C409002D972C /* RVContactsTableViewCell.swift */,
 				545D0BD01AE6B9D4002D972C /* RVTechnicalSkillsTableViewCell.swift */,
 				54D7BB391AE5E791004C9B51 /* RVAboutMeTableViewCell.swift */,
@@ -241,7 +238,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				545D0BCF1AE68BE9002D972C /* RVExperiencesTableViewCell.swift in Sources */,
-				543E43A81AEA7F0200593B6D /* RVIntroViewController.swift in Sources */,
 				545D0BD51AE812D6002D972C /* RVColors.swift in Sources */,
 				545D0BD11AE6B9D4002D972C /* RVTechnicalSkillsTableViewCell.swift in Sources */,
 				545D0BD31AE6C409002D972C /* RVContactsTableViewCell.swift in Sources */,

@@ -111,6 +111,7 @@ class RVPageViewController: UIViewController, UIPageViewControllerDataSource, UI
         dataViewController.pageTitles = pageContent as! [(String)]
         dataViewController.dataDictionary = userInfo?.objectForKey(pageContent[index]) as! [(AnyObject)]
         return dataViewController
+        
     }
     
 
