@@ -31,7 +31,8 @@ class RVMyProjectsTableViewCell: UITableViewCell {
         
         let appImage:UIImage? = UIImage(named: imageNames[indexPath.row])
         tableCell.projectImage.image = appImage
-        tableCell.projectImage.layer.cornerRadius = 8.0
+        tableCell.projectImage.layer.cornerRadius = 12.0
+        tableCell.projectImage.layer.masksToBounds = true
         
         tableCell.projectTitle.text = dataDictionary[indexPath.row + 1][0] as? String
         tableCell.projectDescription.text = dataDictionary[indexPath.row + 1][1] as? String
