@@ -79,6 +79,9 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
             pageController.pageControllerSwitch.currentPageIndicatorTintColor = colors.lightOrangeColor
         }else if(thisPage == pageTitles[3]){
             pageController.pageControllerSwitch.currentPage = 3
+            pageController.pageControllerSwitch.currentPageIndicatorTintColor = colors.blueColor
+        }else if(thisPage == pageTitles[4]){
+            pageController.pageControllerSwitch.currentPage = 4
             pageController.pageControllerSwitch.currentPageIndicatorTintColor = colors.lightPurpleColor
         }
     }
@@ -146,7 +149,20 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
             
         // customizing cells of CONTACT ME
             
-        }else if(pageTitle.text == pageTitles[3]){
+        }
+        else if(pageTitle.text == pageTitles[3]){
+            cellColors(colors.grayColor, pageHeaderColor: colors.blueColor, tableViewSeparatorColor: colors.blueColor, tableViewBackgroundColor: colors.mediumBlueCellColor)
+            
+            let tableCell = tableView.dequeueReusableCellWithIdentifier("myProjectsCell") as! RVMyProjectsTableViewCell
+            tableCell.backgroundColor = UIColor.clearColor()
+            
+            tableCell.customizeMyProjectsCell(tableCell, indexPath: indexPath, dataDictionary: dataDictionary)
+            cell = tableCell
+        
+        
+        
+        }
+        else if(pageTitle.text == pageTitles[4]){
             
             cellColors(colors.grayColor, pageHeaderColor: colors.lightPurpleColor, tableViewSeparatorColor: colors.lightPurpleColor,
                 tableViewBackgroundColor: colors.purpleCellColor)
@@ -177,7 +193,9 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
             return 200
         }else if(pageTitle.text == pageTitles[2]){
             return 130
-        }else if(pageTitle.text == pageTitles[3]){
+        }else if(pageTitle).text == pageTitles[3]{
+            return 300
+        }else if(pageTitle.text == pageTitles[4]){
             
             if(indexPath.row == 0){
                 return 70

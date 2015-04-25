@@ -90,7 +90,7 @@ class RVPageViewController: UIViewController, UIPageViewControllerDataSource, UI
         
         let dic = RVUserInfo.init()
         userInfo = dic.info
-        pageContent = ["About me", "Experiences", "Technical Skills", "Contact me"]
+        pageContent = ["About me", "Experiences", "Technical Skills", "My Projects", "Contact me"]
         
     }
     
