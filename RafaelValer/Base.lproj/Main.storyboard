@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="JYi-MW-J2s">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -65,6 +65,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-389" y="496"/>
+        </scene>
+        <!--Intro View Controller-->
+        <scene sceneID="RBb-NM-UOg">
+            <objects>
+                <viewController id="JYi-MW-J2s" customClass="RVIntroViewController" customModule="RafaelValer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xd6-fK-3dd"/>
+                        <viewControllerLayoutGuide type="bottom" id="1NI-gM-MAO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yRY-8P-YMl">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchScreen my resume" translatesAutoresizingMaskIntoConstraints="NO" id="6r4-vy-32R">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6r4-vy-32R" firstAttribute="leading" secondItem="yRY-8P-YMl" secondAttribute="leading" id="GKS-dU-jtE"/>
+                            <constraint firstItem="6r4-vy-32R" firstAttribute="top" secondItem="yRY-8P-YMl" secondAttribute="top" id="Jan-or-8Bp"/>
+                            <constraint firstItem="1NI-gM-MAO" firstAttribute="top" secondItem="6r4-vy-32R" secondAttribute="bottom" id="o51-1c-0Ey"/>
+                            <constraint firstAttribute="trailing" secondItem="6r4-vy-32R" secondAttribute="trailing" id="oO2-C9-3BZ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="showDetail" identifier="segueIntroToResume" id="CsO-cC-RUt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qhL-Mt-5fk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1189" y="496"/>
         </scene>
         <!--Content View Controller-->
         <scene sceneID="UKq-fK-FFO">
@@ -355,6 +387,7 @@
     </scenes>
     <resources>
         <image name="itemMarker" width="134" height="134"/>
+        <image name="launchScreen my resume" width="600" height="960"/>
         <image name="perfil" width="478" height="478"/>
     </resources>
 </document>

@@ -185,7 +185,7 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
             if (indexPath.row == 0){
                 return 225
             }else if (indexPath.row == 5){
-                return 280
+                return 250
             }
             return 100
             
