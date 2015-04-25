@@ -115,6 +115,77 @@ class RVPageViewController: UIViewController, UIPageViewControllerDataSource, UI
         return dataViewController
         
     }
+    
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        println("acabou")
+        direction = ""
+        isDragging = 0
+    }
+    
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        
+        self.lastContentOffset = scrollView.contentOffset.x;
+        
+        var teste: CGFloat = (scrollView.contentOffset.x) / (self.view.frame.size.width)
+        
+        if(teste >= 1.99 || teste <= 0.01){
+            isDragging = 0
+        }
+        if(teste > 1)
+        {
+            direction = "right"
+            teste = 1 - (teste - 1)
+        }else
+        {
+            direction = "left"
+        }
+        
+        var newRed:CGFloat?
+        var newGreen:CGFloat?
+        var newBlue:CGFloat?
+        
+        
+        if(direction == "right" && isDragging == 1){
+            newRed = (teste) * currentRed + (1 - teste) * nextRed
+            newGreen = (teste) * currentGreen + (1 - teste) * nextGreen
+            newBlue = (teste) * currentBlue + (1 - teste) * nextBlue
+            
+            titleView.backgroundColor = UIColor(red: newRed!, green: newGreen!, blue: newBlue!, alpha: 1)
+        }
+        else if(direction == "left" && isDragging == 1){
+            newRed = teste * currentRed + (1 - teste) * previousRed
+            newGreen = teste * currentGreen + (1 - teste) * previousGreen
+            newBlue = teste * currentBlue + (1 - teste) * previousBlue
+            
+            titleView.backgroundColor = UIColor(red: newRed!, green: newGreen!, blue: newBlue!, alpha: 1)
+        }
+    }
+    
+    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        
+        let colorsArray = [colors.lightBlueColor, colors.lightGreenColor, colors.lightOrangeColor, colors.blueColor,colors.lightPurpleColor]
+        
+        var previousColor:UIColor?
+        var nextColor:UIColor?
+        
+        var currentColor = colorsArray[indexOfPage]
+        
+        if(indexOfPage > 0){
+            previousColor = colorsArray[indexOfPage - 1]
+        }
+        if(indexOfPage < colorsArray.count - 1){
+            nextColor = colorsArray[indexOfPage + 1]
+        }
+        
+        
+        currentColor.getRed(&currentRed, green: &currentGreen, blue: &currentBlue, alpha: &currentAlpha)
+        nextColor?.getRed(&nextRed, green: &nextGreen, blue: &nextBlue, alpha: &nextAlpha)
+        previousColor?.getRed(&previousRed, green: &previousGreen, blue: &previousBlue, alpha: &previousAlpha)
+        
+        println("will begin draggin")
+        isDragging = 1
+    }
 /*
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
         

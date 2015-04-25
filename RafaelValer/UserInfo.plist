@@ -11,11 +11,11 @@
 		</array>
 		<array>
 			<string>Colaborê</string>
-			<string>Porto Alegre is a city with lots of urban problems, with this app will be possible to people report them, so they can be quickly resolved.</string>
+			<string>Porto Alegre is a city with lots of urban problems, with this app it will be possible to people report them to be quickly resolved.</string>
 		</array>
 		<array>
 			<string>Gimme Back</string>
-			<string>An application that remembers you about what have you lent or borrowed from other people.</string>
+			<string>An application that remembers you about what you have lent or borrowed from other people.</string>
 		</array>
 	</array>
 	<key>Contact me</key>
@@ -24,7 +24,7 @@
 		<string>rvaler93@gmail.com</string>
 		<string>http://github.com/Rvaler</string>
 		<string>https://br.linkedin.com/pub/rafael-valer/b7/429/237</string>
-		<string>https://www.facebook.com/rafael.valer.1</string>
+		<string>https://pt-br.facebook.com/rafael.valer.1</string>
 	</array>
 	<key>Technical Skills</key>
 	<array>
@@ -39,13 +39,13 @@
 		<string>Experiences</string>
 		<array>
 			<string>iOS Developer Student - BEPiD</string>
-			<string>February 2015 - present</string>
+			<string>February 2015 - until now</string>
 			<string>Student at BEPiD (Brazilian Educational Program of iOS Developers), an innovative program to qualify graduation students in developing for iOS.</string>
 		</array>
 		<array>
 			<string>Web Developer - MConf</string>
 			<string>September 2014 - January 2015</string>
-			<string>Worked as web developer in a open source project whose goal is the creation of a Web Conference System.</string>
+			<string>Web developer in an open source project whose goal is to create a Web Conference System.</string>
 		</array>
 		<array>
 			<string>Scientific Initiation Schoolarship - PRAV</string>
@@ -55,7 +55,7 @@
 		<array>
 			<string>Scientific Initiation Schoolarship - UFRGS</string>
 			<string>February - July 2013</string>
-			<string>Development of an urban network that simulated the city traffic problems and created solutions for them.</string>
+			<string>Development of an urban network that simulates the city traffic problems and creates solutions for them.</string>
 		</array>
 	</array>
 	<key>About me</key>
@@ -63,10 +63,10 @@
 		<string>About me</string>
 		<string></string>
 		<string>Rafael Valer</string>
-		<string>23 October, 1993</string>
+		<string>October 23, 1993</string>
 		<string>Guaporé - Brazil</string>
 		<string>Porto Alegre - Brazil</string>
-		<string>Studies Computer Science since March 2012 at Universidade Federal do Rio Grande do Sul (UFRGS), one of the best universities of the country.</string>
+		<string>Computer Science since March 2012 at Universidade Federal do Rio Grande do Sul (UFRGS).</string>
 	</array>
 </dict>
 </plist>

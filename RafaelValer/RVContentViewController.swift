@@ -93,7 +93,7 @@ class RVContentViewController: UIViewController, UITableViewDataSource, UITableV
         self.pageTitle.textColor = pageTitleColor
         self.tableView.separatorColor = tableViewSeparatorColor
         self.backgroundView.backgroundColor = tableViewBackgroundColor
-        self.pageHeader.backgroundColor = pageHeaderColor
+        //self.pageHeader.backgroundColor = pageHeaderColor
     }
     
     
